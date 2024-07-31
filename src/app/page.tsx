@@ -12,7 +12,7 @@ export default function HomePage() {
     { label: "About Me", onClick: () => scrollToAboutMe(), icon: <User /> },
     { label: "Resume/CV", onClick: () => console.log("Resume/CV"), icon: <NotebookText /> },
     { label: "Skills", onClick: () => scrollToSkills(), icon: <Puzzle /> },
-    { label: "Projects", onClick: () => console.log("Projects"), icon: <FolderCode /> },
+    { label: "Projects", onClick: () => scrollToProjects(), icon: <FolderCode /> },
   ]
 
   const skills: { title: string, description: string, icon: JSX.Element, hoverClass: string }[] = [
@@ -59,6 +59,7 @@ export default function HomePage() {
 
   const aboutMeRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
 
   const scrollToAboutMe = () => {
     aboutMeRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -66,6 +67,10 @@ export default function HomePage() {
 
   const scrollToSkills = () => {
     skillsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToProjects = () => {
+    projectsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -138,7 +143,7 @@ export default function HomePage() {
       </div>
 
       {/* PROJECTS HEADINGS */}
-      <div ref={skillsRef} className="flex flex-col items-center gap-y-2 px-[350px]">
+      <div ref={projectsRef} className="flex flex-col items-center gap-y-2 px-[350px]">
         <div className="text-4xl font-bold mt-10">My Projects</div>
         <div className="text-2xl text-gray-400 text-center">
           {"Explore some of my projects showcasing my expertise in full stack development. From dynamic web applications to innovative backend solutions, each project highlights my skills, creativity, and dedication to delivering high-quality results."}
@@ -148,7 +153,7 @@ export default function HomePage() {
       {/* MY PROJECTS */}
       <div className="grid grid-cols-3 gap-4 px-[200px]">
         {projects.map((project, index) => (
-          <div key={index} className="flex flex-col h-full">
+          <div key={index} className="flex flex-col h-full bg-gray-200 rounded-xl shadow-lg">
             <div className="flex flex-col h-full justify-between items-center p-4">
               <div className="flex flex-col items-center gap-y-4">
                 <div className="h-[200px] flex items-center justify-center">

@@ -1,6 +1,6 @@
 "use client"
 
-import { Award, Database, FolderCode, Info, Menu, Monitor, NotebookText, Puzzle, Settings, User } from "lucide-react";
+import { Award, Database, FolderCode, Info, Mail, Menu, Monitor, NotebookText, Phone, Puzzle, Settings, University, User } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 import { HeaderButtonGroup } from "~/components/custom/ButtonGroup";
@@ -177,6 +177,36 @@ export default function HomePage() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* CONTACT */}
+      <div className="flex flex-col items-center gap-y-2 px-[350px]">
+        <div className="text-4xl font-bold mt-10">Contact Me</div>
+        <div className="text-xl text-gray-400 text-center w-[550px]">
+          {"I'm always open to new opportunities, collaborations, and exciting projects. If you'd like to get in touch, feel free to reach out."}
+        </div>
+      </div>
+
+      <div className="flex justify-center w-full">
+        <div className="flex flex-col bg-[#212121] text-white rounded-xl w-[600px] p-4 gap-4">
+          <div className="text-2xl font-bold">Contact Information</div>
+
+            <div className="flex gap-x-4">
+              <University className="w-6" />
+              <div className="font-semibold">Student No. 34906258</div>
+            </div>
+
+            <div className="flex gap-x-4">
+              <Phone className="w-6" />
+              <div className="font-semibold">012 345 6789</div>
+            </div>
+
+            <div className="flex gap-x-4">
+              <Mail className="w-6" />
+              <div className="font-semibold">markus.marais@outlook.com</div>
+            </div>
+
+        </div>
       </div>
 
 

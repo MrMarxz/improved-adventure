@@ -2,7 +2,7 @@
 
 import { Database, FolderCode, Mail, Monitor, Phone, Puzzle, Scroll, Settings, University, User } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HeaderButtonGroup } from "~/components/custom/ButtonGroup";
 import ScrollToTopButton from "~/components/custom/ScrollToTop";
 import { Button } from "~/components/ui/button";
@@ -61,6 +61,7 @@ export default function HomePage() {
   const skillsRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const scrollToAboutMe = () => {
     aboutMeRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -92,11 +93,29 @@ export default function HomePage() {
       });
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col text-black p-8 space-y-8 mb-10">
       {/* NAVIGATION BUTTONS */}
-      <div className="flex flex-col items-center">
-        <HeaderButtonGroup buttons={buttons} />
+      <div className={`fixed top-0 left-0 right-0 bg-white transition-shadow duration-200 z-10 ${isScrolled ? 'shadow-md' : ''}`}>
+        <div className="container mx-auto px-4 w-[500px]">
+          <HeaderButtonGroup buttons={buttons} />
+        </div>
       </div>
 
       {/* INTRO */}

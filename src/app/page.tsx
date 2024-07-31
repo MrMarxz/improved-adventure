@@ -4,6 +4,7 @@ import { Database, FolderCode, Mail, Monitor, Phone, Puzzle, Scroll, Settings, U
 import Image from "next/image";
 import { useRef } from "react";
 import { HeaderButtonGroup } from "~/components/custom/ButtonGroup";
+import ScrollToTopButton from "~/components/custom/ScrollToTop";
 import { Button } from "~/components/ui/button";
 import { type Button as ButtonType } from "~/utils/types";
 
@@ -237,7 +238,7 @@ export default function HomePage() {
         </div>
       </div>
 
-
+      <ScrollToTopButton />
     </main>
   );
 }

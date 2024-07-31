@@ -4,15 +4,15 @@ import { Award, Database, FolderCode, Info, Menu, Monitor, NotebookText, Puzzle,
 import Image from "next/image";
 import { useRef } from "react";
 import { HeaderButtonGroup } from "~/components/custom/ButtonGroup";
-import { Button } from "~/utils/types";
+import { Button } from "~/components/ui/button";
+import { type Button as ButtonType } from "~/utils/types";
 
 export default function HomePage() {
-  const buttons: Button[] = [
+  const buttons: ButtonType[] = [
     { label: "About Me", onClick: () => scrollToAboutMe(), icon: <User /> },
     { label: "Resume/CV", onClick: () => console.log("Resume/CV"), icon: <NotebookText /> },
     { label: "Skills", onClick: () => scrollToSkills(), icon: <Puzzle /> },
     { label: "Projects", onClick: () => console.log("Projects"), icon: <FolderCode /> },
-    { label: "Contact Information", onClick: () => console.log("Contact Information"), icon: <Info /> },
   ]
 
   const skills: { title: string, description: string, icon: JSX.Element, hoverClass: string }[] = [
@@ -33,6 +33,27 @@ export default function HomePage() {
       description: "I specialize in database management and design, ensuring efficient data storage, retrieval, and security. With expertise in SQL, NoSQL, and relational database systems, I create optimized and scalable database solutions customized to project requirements.",
       icon: <Database />,
       hoverClass: "hover:animate-pulse"
+    }
+  ]
+
+  const projects: { title: string, description: string, imagePath: string, link: string }[] = [
+    {
+      title: "Basic Strategy Pro",
+      description: "Basic Strategy Pro is a web application that helps users learn and practice basic strategy in blackjack. The app features a user-friendly interface, interactive gameplay, and real-time feedback to enhance learning and skill development.",
+      imagePath: "/basic_strategy_screenshot.png",
+      link: "https://basic-strategy.vercel.app/"
+    },
+    {
+      title: "Weather Station",
+      description: "Weather Station is a web application that provides real-time weather data and forecasts. The app features a sleek, modern design, intuitive navigation, and accurate weather information to help users plan their day effectively.",
+      imagePath: "/weather_station_screenshot.png",
+      link: "https://weather-rouge-iota.vercel.app/"
+    },
+    {
+      title: "ERC-20 Blockchain Repository",
+      description: "ERC-20 Blockchain Repository is a decentralized application (dApp) that allows users to create, manage, and trade ERC-20 tokens. The dApp features secure blockchain technology, smart contracts, and user-friendly interfaces for seamless token management.",
+      imagePath: "/blockchain.jpg",
+      link: "https://github.com/MrMarxz/erc20_contract"
     }
   ]
 
@@ -70,7 +91,7 @@ export default function HomePage() {
 
       {/* ABOUT ME */}
       <div ref={aboutMeRef} className="flex flex-col items-center gap-y-6 px-[350px]">
-        <div className="text-4xl font-bold mt-10">About Me</div>
+        <div className="text-5xl font-bold mt-10">About Me</div>
         <div className="text-2xl text-gray-400 text-center mb-10">
           I am an experienced Full Stack Developer with three years of
           professional experience. My interest in programming began with classic
@@ -112,6 +133,43 @@ export default function HomePage() {
             <div className={`rounded-full bg-black text-white p-3 cursor-pointer ${skill.hoverClass}`}>{skill.icon}</div>
             <div className="text-xl font-bold">{skill.title}</div>
             <div className="text-center">{skill.description}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* PROJECTS HEADINGS */}
+      <div ref={skillsRef} className="flex flex-col items-center gap-y-2 px-[350px]">
+        <div className="text-4xl font-bold mt-10">My Projects</div>
+        <div className="text-2xl text-gray-400 text-center">
+          {"Explore some of my projects showcasing my expertise in full stack development. From dynamic web applications to innovative backend solutions, each project highlights my skills, creativity, and dedication to delivering high-quality results."}
+        </div>
+      </div>
+
+      {/* MY PROJECTS */}
+      <div className="grid grid-cols-3 gap-4 px-[200px]">
+        {projects.map((project, index) => (
+          <div key={index} className="flex flex-col h-full">
+            <div className="flex flex-col h-full justify-between items-center p-4">
+              <div className="flex flex-col items-center gap-y-4">
+                <div className="h-[200px] flex items-center justify-center">
+                  <Image
+                    src={project.imagePath}
+                    width={300}
+                    height={200}
+                    alt=""
+                    className="object-cover max-h-[200px] w-auto"
+                  />
+                </div>
+                <div className="text-xl font-bold">{project.title}</div>
+                <div className="text-center">{project.description}</div>
+              </div>
+              <Button
+                onClick={() => window.open(project.link, "_blank")}
+                className="mt-4"
+              >
+                View Project
+              </Button>
+            </div>
           </div>
         ))}
       </div>

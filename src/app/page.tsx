@@ -1,6 +1,6 @@
 "use client"
 
-import { Award, Database, FolderCode, Info, Mail, Menu, Monitor, NotebookText, Phone, Puzzle, Settings, University, User } from "lucide-react";
+import { Database, FolderCode, Mail, Monitor, Phone, Puzzle, Scroll, Settings, University, User } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 import { HeaderButtonGroup } from "~/components/custom/ButtonGroup";
@@ -10,7 +10,6 @@ import { type Button as ButtonType } from "~/utils/types";
 export default function HomePage() {
   const buttons: ButtonType[] = [
     { label: "About Me", onClick: () => scrollToAboutMe(), icon: <User /> },
-    { label: "Resume/CV", onClick: () => console.log("Resume/CV"), icon: <NotebookText /> },
     { label: "Skills", onClick: () => scrollToSkills(), icon: <Puzzle /> },
     { label: "Projects", onClick: () => scrollToProjects(), icon: <FolderCode /> },
   ]
@@ -60,6 +59,7 @@ export default function HomePage() {
   const aboutMeRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   const scrollToAboutMe = () => {
     aboutMeRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -73,8 +73,26 @@ export default function HomePage() {
     projectsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const handleDownloadResume = () => () => {
+    const path = "/assets/Markus_CV.pdf";
+
+    void fetch(path)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Markus_CV.pdf";
+        a.click();
+      });
+  };
+
   return (
-    <main className="flex min-h-screen flex-col text-black p-8 space-y-8">
+    <main className="flex min-h-screen flex-col text-black p-8 space-y-8 mb-10">
       {/* NAVIGATION BUTTONS */}
       <div className="flex flex-col items-center">
         <HeaderButtonGroup buttons={buttons} />
@@ -87,6 +105,16 @@ export default function HomePage() {
           <div className="text-5xl font-bold">Welcome to my Virtual CV!</div>
           <div className="text-2xl text-gray-400">
             {"I'm Markus Marais, a passionate software developer with a love for all things tech. Here you can find out more about me, my projects, and catch a glimpse of myself."}
+          </div>
+          <div className="flex w-full gap-x-4">
+            <Button onClick={handleDownloadResume()} className="flex gap-x-4">
+              <Scroll className="w-5" />
+              Download Resume
+            </Button>
+            <Button onClick={() => scrollToContact()} className="flex gap-x-4">
+              <User className="w-5" />
+              Contact
+            </Button>
           </div>
         </div>
 
@@ -187,24 +215,24 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="flex justify-center w-full">
+      <div ref={contactRef} className="flex justify-center w-full">
         <div className="flex flex-col bg-[#212121] text-white rounded-xl w-[600px] p-4 gap-4">
           <div className="text-2xl font-bold">Contact Information</div>
 
-            <div className="flex gap-x-4">
-              <University className="w-6" />
-              <div className="font-semibold">Student No. 34906258</div>
-            </div>
+          <div className="flex gap-x-4">
+            <University className="w-6" />
+            <div className="font-semibold">Student No. 34906258</div>
+          </div>
 
-            <div className="flex gap-x-4">
-              <Phone className="w-6" />
-              <div className="font-semibold">012 345 6789</div>
-            </div>
+          <div className="flex gap-x-4">
+            <Phone className="w-6" />
+            <div className="font-semibold">012 345 6789</div>
+          </div>
 
-            <div className="flex gap-x-4">
-              <Mail className="w-6" />
-              <div className="font-semibold">markus.marais@outlook.com</div>
-            </div>
+          <div className="flex gap-x-4">
+            <Mail className="w-6" />
+            <div className="font-semibold">markus.marais@outlook.com</div>
+          </div>
 
         </div>
       </div>

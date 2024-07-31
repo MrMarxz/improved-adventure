@@ -15,21 +15,24 @@ export default function HomePage() {
     { label: "Contact Information", onClick: () => console.log("Contact Information"), icon: <Info /> },
   ]
 
-  const skills: { title: string, description: string, icon: JSX.Element }[] = [
+  const skills: { title: string, description: string, icon: JSX.Element, hoverClass: string }[] = [
     {
       title: "Frontend Development",
       description: "I am proficient in frontend development, utilizing powerful frameworks like React, Next.js, Angular, and Vue.js. My skills ensure the creation of dynamic, responsive, and user-friendly interfaces that enhance user experiences and drive engagement.",
-      icon: <Monitor />
+      icon: <Monitor />,
+      hoverClass: "hover:animate-ping"
     },
     {
       title: "Backend Development",
       description: "I excel in backend development, leveraging powerful languages and frameworks like Next.js, Laravel, Python, and Node.js. My expertise ensures robust, scalable, and efficient server-side solutions tailored to meet diverse project needs.",
-      icon: <Settings />
+      icon: <Settings />,
+      hoverClass: "hover:animate-spin"
     },
     {
       title: "Database Management and Design",
       description: "I specialize in database management and design, ensuring efficient data storage, retrieval, and security. With expertise in SQL, NoSQL, and relational database systems, I create optimized and scalable database solutions customized to project requirements.",
-      icon: <Database />
+      icon: <Database />,
+      hoverClass: "hover:animate-pulse"
     }
   ]
 
@@ -106,7 +109,7 @@ export default function HomePage() {
       <div className="grid grid-cols-3 space-4 px-[200px]">
         {skills.map((skill, index) => (
           <div key={index} className="flex flex-col items-center gap-y-4 p-4">
-            <div className="rounded-full bg-black text-white p-3">{skill.icon}</div>
+            <div className={`rounded-full bg-black text-white p-3 cursor-pointer ${skill.hoverClass}`}>{skill.icon}</div>
             <div className="text-xl font-bold">{skill.title}</div>
             <div className="text-center">{skill.description}</div>
           </div>

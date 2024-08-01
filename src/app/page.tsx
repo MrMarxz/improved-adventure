@@ -44,17 +44,17 @@ export default function HomePage() {
       link: "https://basic-strategy.vercel.app/"
     },
     {
+      title: "ERC-20 Blockchain Repository",
+      description: "ERC-20 Blockchain Repository is a decentralized application (dApp) that allows users to create, manage, and trade ERC-20 tokens. The dApp features secure blockchain technology, smart contracts, and user-friendly interfaces for seamless token management.",
+      imagePath: "/blockchain.jpg",
+      link: "https://github.com/MrMarxz/erc20_contract"
+    },
+    {
       title: "Weather Station",
       description: "Weather Station is a web application that provides real-time weather data and forecasts. The app features a sleek, modern design, intuitive navigation, and accurate weather information to help users plan their day effectively.",
       imagePath: "/weather_station_screenshot.png",
       link: "https://weather-rouge-iota.vercel.app/"
     },
-    {
-      title: "ERC-20 Blockchain Repository",
-      description: "ERC-20 Blockchain Repository is a decentralized application (dApp) that allows users to create, manage, and trade ERC-20 tokens. The dApp features secure blockchain technology, smart contracts, and user-friendly interfaces for seamless token management.",
-      imagePath: "/blockchain.jpg",
-      link: "https://github.com/MrMarxz/erc20_contract"
-    }
   ]
 
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -121,18 +121,18 @@ export default function HomePage() {
       {/* INTRO */}
       <div className="flex flex-row justify-between gap-x-10 px-[200px]">
 
-        <div className="flex flex-col gap-y-6 justify-center">
+        <div className="flex flex-col justify-center">
           <div className="text-5xl font-bold">Welcome to my Virtual CV!</div>
-          <div className="text-2xl text-gray-400">
+          <div className="text-2xl text-gray-400 mt-[20px]">
             {"I'm Markus Marais, a passionate software developer with a love for all things tech. Here you can find out more about me, my projects, and catch a glimpse of myself."}
           </div>
-          <div className="flex w-full gap-x-4">
-            <Button onClick={handleDownloadResume()} className="flex gap-x-4">
-              <Scroll className="w-5" />
+          <div className="flex w-full gap-x-[20px] mt-[40px]">
+            <Button variant="lightBue" onClick={handleDownloadResume()} className="flex gap-x-[10px]">
+              <Scroll className="w-4" />
               Download Resume
             </Button>
-            <Button onClick={() => scrollToContact()} className="flex gap-x-4">
-              <User className="w-5" />
+            <Button variant="lightBue" onClick={() => scrollToContact()} className="flex gap-x-[10px]">
+              <User className="w-4" />
               Contact
             </Button>
           </div>
@@ -143,9 +143,9 @@ export default function HomePage() {
       </div>
 
       {/* ABOUT ME */}
-      <div ref={aboutMeRef} className="flex flex-col items-center gap-y-6 px-[350px]">
-        <div className="text-5xl font-bold mt-10">About Me</div>
-        <div className="text-2xl text-gray-400 text-center mb-10">
+      <div ref={aboutMeRef} className="flex flex-col items-center px-[350px]">
+        <div className="text-5xl font-bold mt-[60px]">About Me</div>
+        <div className="text-2xl text-gray-400 text-center mt-[20px]">
           I am an experienced Full Stack Developer with three years of
           professional experience. My interest in programming began with classic
           Scratch in high school, a visual coding tool, which sparked my passion
@@ -158,9 +158,9 @@ export default function HomePage() {
       </div>
 
       {/* FAVOURITE TECH STACKS */}
-      <div className="flex flex-col justify-center items-center space-y-8 py-10">
-        <div className="text-xl font-semibold">Some of my favourites</div>
-        <div className="flex flex-row w-full justify-center items-center gap-x-[50px] px-[100px]">
+      <div className="flex flex-col justify-center items-center">
+        <div className="text-xl font-semibold mt-[40px]">Some of my favourites</div>
+        <div className="flex flex-row w-full justify-center items-center gap-x-[50px] px-[100px] mt-[40px]">
           <Image src="/nextjs_logo.png" width={150} height={150} alt="" />
           <Image src="/nodejs_logo.png" width={150} height={150} alt="" />
           <Image src="/react_logo.png" width={150} height={150} alt="" />
@@ -171,39 +171,39 @@ export default function HomePage() {
       </div>
 
       {/* MY SKILLS HEADINGS */}
-      <div ref={skillsRef} className="flex flex-col items-center gap-y-2 px-[350px]">
-        <div className="text-xl font-semibold mt-10">My Skills</div>
-        <div className="text-4xl font-bold">What I do</div>
-        <div className="text-2xl text-gray-400 text-center">
+      <div ref={skillsRef} className="flex flex-col items-center px-[350px]">
+        <div className="text-xl font-semibold mt-[60px]">My Skills</div>
+        <div className="text-4xl font-bold mt-[10px]">What I do</div>
+        <div className="text-2xl text-gray-400 text-center mt-[20px]">
           {"I'm not just a developer; I'm a digital explorer with a wide range of skills. Crafting immersive online experiences is not just a job but my passion. Discover below how my curiosity and versatility can benefit you."}
         </div>
       </div>
 
       {/* MY SKILLS */}
-      <div className="grid grid-cols-3 space-4 px-[200px]">
+      <div className="grid grid-cols-3 px-[200px]">
         {skills.map((skill, index) => (
-          <div key={index} className="flex flex-col items-center gap-y-4 p-4">
-            <div className={`rounded-full bg-black text-white p-3 cursor-pointer ${skill.hoverClass}`}>{skill.icon}</div>
-            <div className="text-xl font-bold">{skill.title}</div>
-            <div className="text-center">{skill.description}</div>
+          <div key={index} className="flex flex-col items-center px-4 mt-[40px]">
+            <div className={`rounded-full bg-cyan-600 hover:bg-cyan-500 text-white p-3 cursor-pointer ${skill.hoverClass}`}>{skill.icon}</div>
+            <div className="text-xl font-bold mt-[20px]">{skill.title}</div>
+            <div className="text-center mt-[20px]">{skill.description}</div>
           </div>
         ))}
       </div>
 
       {/* PROJECTS HEADINGS */}
-      <div ref={projectsRef} className="flex flex-col items-center gap-y-2 px-[350px]">
-        <div className="text-4xl font-bold mt-10">My Projects</div>
-        <div className="text-2xl text-gray-400 text-center">
+      <div ref={projectsRef} className="flex flex-col items-center px-[350px]">
+        <div className="text-4xl font-bold mt-[60px]">My Projects</div>
+        <div className="text-2xl text-gray-400 text-center mt-[20px]">
           {"Explore some of my projects showcasing my expertise in full stack development. From dynamic web applications to innovative backend solutions, each project highlights my skills, creativity, and dedication to delivering high-quality results."}
         </div>
       </div>
 
       {/* MY PROJECTS */}
-      <div className="grid grid-cols-3 gap-4 px-[200px]">
+      <div className="grid grid-cols-3 gap-x-[20px] px-[200px]">
         {projects.map((project, index) => (
-          <div key={index} className="flex flex-col h-full bg-gray-200 rounded-xl shadow-lg">
-            <div className="flex flex-col h-full justify-between items-center p-4">
-              <div className="flex flex-col items-center gap-y-4">
+          <div key={index} className="flex flex-col h-full bg-gray-200 rounded-xl shadow-lg mt-[40px] p-[20px]">
+            <div className="flex flex-col h-full justify-between items-center">
+              <div className="flex flex-col items-center">
                 <div className="h-[200px] flex items-center justify-center">
                   <Image
                     src={project.imagePath}
@@ -213,12 +213,13 @@ export default function HomePage() {
                     className="object-cover max-h-[200px] w-auto"
                   />
                 </div>
-                <div className="text-xl font-bold">{project.title}</div>
-                <div className="text-center">{project.description}</div>
+                <div className="text-xl font-bold mt-[20px]">{project.title}</div>
+                <div className="text-center mt-[20px]">{project.description}</div>
               </div>
               <Button
                 onClick={() => window.open(project.link, "_blank")}
-                className="mt-4"
+                className="mt-[40px] p-[10px]"
+                variant="lightBue"
               >
                 View Project
               </Button>
@@ -228,29 +229,29 @@ export default function HomePage() {
       </div>
 
       {/* CONTACT */}
-      <div className="flex flex-col items-center gap-y-2 px-[350px]">
-        <div className="text-4xl font-bold mt-10">Contact Me</div>
-        <div className="text-xl text-gray-400 text-center w-[550px]">
+      <div className="flex flex-col items-center px-[350px]">
+        <div className="text-4xl font-bold mt-[100px]">Contact Me</div>
+        <div className="text-xl text-gray-400 text-center w-[550px] mt-[20px]">
           {"I'm always open to new opportunities, collaborations, and exciting projects. If you'd like to get in touch, feel free to reach out."}
         </div>
       </div>
 
       <div ref={contactRef} className="flex justify-center w-full">
-        <div className="flex flex-col bg-[#212121] text-white rounded-xl w-[600px] p-4 gap-4">
-          <div className="text-2xl font-bold">Contact Information</div>
+        <div className="flex flex-col bg-cyan-600 text-white rounded-xl w-[600px] px-4 mt-[20px]">
+          <div className="text-2xl font-bold mt-[15px]">Contact Information</div>
 
-          <div className="flex gap-x-4">
-            <University className="w-6" />
+          <div className="flex gap-x-[15px] mt-[20px]">
+            <University className="w-5" />
             <div className="font-semibold">Student No. 34906258</div>
           </div>
 
-          <div className="flex gap-x-4">
-            <Phone className="w-6" />
+          <div className="flex gap-x-[15px] mt-[15px]">
+            <Phone className="w-5" />
             <div className="font-semibold">012 345 6789</div>
           </div>
 
-          <div className="flex gap-x-4">
-            <Mail className="w-6" />
+          <div className="flex gap-x-[15px] my-[15px]">
+            <Mail className="w-5" />
             <div className="font-semibold">markus.marais@outlook.com</div>
           </div>
 

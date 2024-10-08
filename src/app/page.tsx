@@ -245,14 +245,9 @@ export default function HomePage() {
             <div className="font-semibold">Student No. 34906258</div>
           </div>
 
-          <div className="flex gap-x-[15px] mt-[15px]">
-            <Phone className="w-5" />
-            <div className="font-semibold">012 345 6789</div>
-          </div>
-
           <div className="flex gap-x-[15px] my-[15px]">
             <Mail className="w-5" />
-            <div className="font-semibold">markus.marais@outlook.com</div>
+            <div className="font-semibold">markus.marais@yahoo.com</div>
           </div>
 
         </div>
